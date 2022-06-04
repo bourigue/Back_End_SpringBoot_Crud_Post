@@ -8,4 +8,7 @@ public interface PostProjection {
     public String getImage();
     public Long getUserId();
     public Long getId();
+
+
+
 }

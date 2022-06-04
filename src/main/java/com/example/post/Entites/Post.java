@@ -20,4 +20,6 @@ public class Post implements Serializable {
     private Long userId;
     private String description;
     private String image;
+
+
 }

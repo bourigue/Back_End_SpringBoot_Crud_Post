@@ -15,6 +15,7 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userId;
+    private Long userId;
     private String description;
+    private String image;
 }

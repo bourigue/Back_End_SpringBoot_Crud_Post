@@ -1,6 +1,7 @@
 package com.example.post.Entites;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 @Entity
 @AllArgsConstructor @NoArgsConstructor @ToString
+@Data
 public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

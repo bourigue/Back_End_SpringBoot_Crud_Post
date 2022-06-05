@@ -17,6 +17,10 @@ public class PostService {
  public  List<Post> getPosts(){
      return postRepository.findAll();
  }
+    //select all product
+    public  Post getPost(Long id){
+        return postRepository.findById(id).get();
+    }
 // add the post
  public void savePost(Post post){
      postRepository.save(post);

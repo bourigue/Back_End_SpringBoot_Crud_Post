@@ -18,9 +18,7 @@ public class PostService {
      return postRepository.findAll();
  }
     //select all product
-    public  Post getPost(Long id){
-        return postRepository.findById(id).get();
-    }
+public  Post getPost(Long id){ return postRepository.findById(id).get(); }
 // add the post
  public void savePost(Post post){
      postRepository.save(post);
@@ -30,9 +28,7 @@ public class PostService {
     postRepository.deleteById(id);
  }
 //update the post
-public void updatePost(Post post,Long id){
-    post.setId(id);
-     postRepository.save(post);
+public void updatePost(Post post,Long id){ post.setId(id);postRepository.save(post);
 }
 
 

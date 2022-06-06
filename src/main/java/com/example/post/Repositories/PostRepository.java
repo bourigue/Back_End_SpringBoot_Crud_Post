@@ -13,6 +13,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 
 
+
 //@RestResource(path = "/ByDescriptionPage")
  //public List<Post> findByDescriptionContains(@Param("mc") String mc);
 }

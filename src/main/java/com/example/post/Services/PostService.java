@@ -13,12 +13,12 @@ import java.util.List;
 public class PostService {
  @Autowired
  PostRepository postRepository;
- //select all product
+ //select all post
  public  List<Post> getPosts(){
      return postRepository.findAll();
  }
-    //select all product
-public  Post getPost(Long id){ return postRepository.findById(id).get(); }
+    //select one post
+ public  Post getPost(Long id){ return postRepository.findById(id).get(); }
 // add the post
  public void savePost(Post post){
      postRepository.save(post);

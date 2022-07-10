@@ -1,15 +1,17 @@
 package com.example.post.Services;
 
-import com.example.post.Entites.Post;
-import com.example.post.Repositories.PostRepository;
+import com.example.post.Entites.*;
+import com.example.post.Helper.ExcelHelper;
+import com.example.post.Repositories.*;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
-@Data
 public class PostService {
  @Autowired
  PostRepository postRepository;
@@ -30,8 +32,22 @@ public class PostService {
 //update the post
 public void updatePost(Post post,Long id){ post.setId(id);postRepository.save(post);
 }
-
-
+    public void savefile(MultipartFile file) {
+        try {
+            List<Post> posts = ExcelHelper.excelToTutorials(file.getInputStream());
+            postRepository.saveAll(posts);
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
+    }
+    public  List<Post> datafile(MultipartFile file) {
+        try {
+            List<Post> posts = ExcelHelper.excelToTutorials(file.getInputStream());
+            return posts;
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
+    }
 
 
 }

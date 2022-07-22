@@ -1,15 +1,10 @@
 package com.example.post.Entites;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 @Entity
 @AllArgsConstructor
@@ -23,5 +18,7 @@ public class User  implements Serializable {
     private String email;
     private String password;
     private int age;
+    @ManyToMany
+    private Collection<userRole> useroles;
 
 }

@@ -1,4 +1,5 @@
 package com.example.post.Helper;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -13,8 +14,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
+
 public class ExcelHelper {
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+
     //static String[] HEADERs = { "id", "description", "image", "userId" };
     //static String SHEET = "Tutorials";
     public static boolean hasExcelFormat(MultipartFile file) {
@@ -23,6 +26,7 @@ public class ExcelHelper {
         }
         return true;
     }
+
     public static List<Post> excelToTutorials(InputStream is) {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(is);
@@ -30,7 +34,7 @@ public class ExcelHelper {
 
             int rowNumber = 0;
             Iterator<Row> rows = sheet.iterator();
-           List<Post> tutorials = new ArrayList<Post>();
+            List<Post> tutorials = new ArrayList<Post>();
 
             while (rows.hasNext()) {
                 Row currentRow = rows.next();
@@ -55,7 +59,7 @@ public class ExcelHelper {
                             post.setImage(currentCell.getStringCellValue());
                             break;
                         case 3:
-                            post.setUserId((long)currentCell.getNumericCellValue());
+                            post.setUserId((long) currentCell.getNumericCellValue());
                             break;
                         default:
                             break;

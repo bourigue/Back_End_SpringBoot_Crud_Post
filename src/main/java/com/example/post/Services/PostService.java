@@ -13,33 +13,42 @@ import java.util.Optional;
 
 @Service
 public class PostService {
- @Autowired
- PostRepository postRepository;
- //select all post
- public  List<Post> getPosts(){
-     return postRepository.findAll();
- }
-    //select one post
- public  Post getPost(Long id){ return postRepository.findById(id).get(); }
-// add the post
- public void savePost(Post post){
-     postRepository.save(post);
- }
-//delete post
- public void deletePost(Long id){
-    postRepository.deleteById(id);
- }
-//update the post
-public void updatePost(Post post,Long id){ post.setId(id);postRepository.save(post);
-}
+    @Autowired
+    PostRepository postRepository;
 
-public Optional<Post> findPostById(Long id){
-
-     return postRepository.findById(id);
+    //select all post
+    public List<Post> getPosts() {
+        return postRepository.findAll();
     }
 
-//convert data file exel to list ppost
-public void savefile(MultipartFile file) {
+    //select one post
+    public Post getPost(Long id) {
+        return postRepository.findById(id).get();
+    }
+
+    // add the post
+    public void savePost(Post post) {
+        postRepository.save(post);
+    }
+
+    //delete post
+    public void deletePost(Long id) {
+        postRepository.deleteById(id);
+    }
+
+    //update the post
+    public void updatePost(Post post, Long id) {
+        post.setId(id);
+        postRepository.save(post);
+    }
+
+    public Optional<Post> findPostById(Long id) {
+
+        return postRepository.findById(id);
+    }
+
+    //convert data file exel to list ppost
+    public void savefile(MultipartFile file) {
         try {
             List<Post> posts = ExcelHelper.excelToTutorials(file.getInputStream());
             postRepository.saveAll(posts);
@@ -47,7 +56,8 @@ public void savefile(MultipartFile file) {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }
     }
-    public  List<Post> datafile(MultipartFile file) {
+
+    public List<Post> datafile(MultipartFile file) {
         try {
             List<Post> posts = ExcelHelper.excelToTutorials(file.getInputStream());
             return posts;

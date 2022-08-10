@@ -10,8 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+
 @Entity
-@AllArgsConstructor @NoArgsConstructor @ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Data
 public class Post implements Serializable {
     @Id
